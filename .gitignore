@@ -17,3 +17,17 @@ Thumbs.db
 
 # Archivos de configuración sensibles (si hubiera)
 .env
+
+# Reportes de Testing (Jest)
+coverage/
+
+# Logs específicos del gestor de paquetes
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Directorios de compilación (preparación para el futuro)
+dist/
+build/
+out/

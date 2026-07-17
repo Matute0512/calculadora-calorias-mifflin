@@ -27,3 +27,15 @@ export function renderResults(goals) {
 
     document.getElementById('results-section').classList.remove('hidden');
 }
+
+export const populateForm = (data) => {
+    if (!data) return;
+
+    const fields = ['peso', 'altura', 'edad', 'sexo', 'actividad'];
+    fields.forEach(field => {
+        const element = document.getElementById(field);
+        if (element && data[field]){
+            element.value = data[field];
+        }
+    });
+};
