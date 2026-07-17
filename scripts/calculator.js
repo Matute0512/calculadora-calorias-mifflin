@@ -27,7 +27,7 @@ export function calcTDEE(bmr, factorActividad){
  * @param {number} mbr - TMB (para límite inferior del déficit)
  * @returns {{deficit: number , maintenance: number, surplus: number}}
  */
-export function calcGoals(tdee, mbr){
+export function calcGoals(tdee, bmr){
     const deficit = Math.max(tdee -500, bmr); // No bajar de la TMB
     const maintenance = tdee;
     const surplus = tdee + 500;

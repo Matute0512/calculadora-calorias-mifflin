@@ -1,7 +1,7 @@
 import {calcBMR, calcTDEE, calcGoals} from './scripts/calculator.js';
 import {getFormData, renderResults} from './scripts/ui.js';
 
-document.getElementById('calories-form').addEventListener('submit', function(event){
+document.getElementById('calorie-form').addEventListener('submit', function(event){
     event.preventDefault();
 
     const data = getFormData();
