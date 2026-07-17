@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Calorias - Mifflin-St Jeor</title>
+    <meta name="description" content="Calcula tus calorías diarias para déficit, mantenimiento o sup
+    erávit usando la fórmula de Mifflin-St Jeor. Herramienta informativa, no sustituye el consejo profesional.">
+    <link rel="stylesheet" href="styles/style.css">
+    <!-- Sin estilos en línea ni scripts aquí-->
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🥗 Calculadora de Calorías</h1>
+            <p class="subtitle">Basada en la ecuación Mifflin-St Jeor</p>
+        </div>
+    </header>
+
+
+    <main>
+        <div class="container">
+            <section aria-labelledby="form-heading">
+                <h2 id="form-heading">Ingresa tus datos</h2>
+                <form id="calorie-form" novalidate>
+                    <div class="form-group">
+                        <label for="peso">Peso (kg) *</label>
+                        <input type="number" name="peso" id="peso" min="30" max="300" step="0.1" required placeholder="Ej. 70.5">
+                    </div>
+                    <div class="form-group">
+                        <label for="altura">Altura (cm) *</label>
+                        <input type="number" name="altura" id="altura" min="100" max="250" step="0.1" required placeholder="Ej. 170">
+                    </div>
+                    <div class="form-group">
+                        <label for="edad">Edad (años) *</label>
+                        <input type="number" name="edad" id="edad" min="15" max="100" required placeholder="Ej. 25">
+                    </div>
+                    <fieldset>
+                        <legend>Sexo *</legend>
+                        <div class="radio-group">
+                            <input type="radio" name="sexo" id="hombre" value="hombre" required>
+                            <label for="hombre">Hombre</label>
+                        </div>
+                        <div class="radio-group">
+                            <input type="radio" name="sexo" id="mujer" value="mujer" required>
+                            <label for="mujer">Mujer</label>
+                        </div>
+                    </fieldset>
+                    <div class="form-group">
+                        <label for="actividad">Nivel de Actividad *</label>
+                        <select name="actividad" id="actividad" required>
+                            <option value="">Selecciona una opción</option>
+                            <option value="1.2">Sedentario (poco o nada de ejercicio)</option>
+                            <option value="1.375">Ligero (1-3 días/semana)</option>
+                            <option value="1.55">Moderado (3-5 días/semana)</option>
+                            <option value="1.752">Activo (6-7 días/semana)</option>
+                            <option value="1.9">Muy activo (atleta, trabajo físico)</option>
+                        </select>
+                    </div>
+                    <button type="submit" id="calculate-btn">Calcular mis calorías</button>
+                </form>
+            </section>
+
+
+            <section id="results-section" aria-live="polite" class="hidden">
+                <h2>Resultados de tus objetivos calóricos</h2>
+                <div class="cards-container">
+                    <article class="card deficit" aria-labelledby="deficit-heading">
+                        <h3 id="deficit-heading">🔻 Déficit</h3>
+                        <p>Para pérdida de grasa</p>
+                        <p class="calories" id="deficit-calories">-- kcal/día</p>
+                    </article>
+
+                    <article class="card maintenance" aria-labelledby="maintenance-heading">
+                        <h3 id="maintenance-heading">⚖️ Mantenimiento</h3>
+                        <p>Para mantener tu peso</p>
+                        <p class="calories" id="maintenance-calories">-- kcal/día</p>
+                    </article>
+
+                    <article class="card surplus" aria-labelledby="surplus-heading">
+                        <h3 id="surplus-heading">🔺 Superávit</h3>
+                        <p>Para aumento muscular</p>
+                        <p class="calories" id="surplus-calories">-- kcal/día</p>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <section class="disclaimer" aria-label="Aviso legal">
+                <h2>⚠️ Aviso Legal</h2>
+                <p>
+                    Esta calculadora proporciona estimaciones basadas en la fórmula de Mifflin‑St Jeor y factores de actividad estándar.
+                    Los resultados son únicamente con fines informativos y educativos. No constituyen asesoramiento médico, nutricional ni de salud.
+                    Antes de realizar cambios en tu dieta o rutina de ejercicios, consulta con un profesional de la salud o nutricionista cualificado.
+                    El autor de esta herramienta no asume responsabilidad alguna por el uso indebido de la información proporcionada.
+                </p>
+            </section>
+            <p class="copyright">&copy; 2026 - Calculadora de Calorías Mifflin-St Jeor. Proyecto de Portafolio.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
