@@ -1,0 +1,12 @@
+{
+    "name": "calculadora-calorias-mifflin",
+    "version": "1.1.0",
+    "description": "Calculadora de Calorías y Objetivos Nutricionales",
+    "type": "module",
+    "scripts": {
+        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    },
+    "devDependencies": {
+        "jest": "^29.7.0"
+    }
+}
