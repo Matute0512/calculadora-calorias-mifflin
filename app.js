@@ -1,26 +1,10 @@
-import {calcBMR, calcTDEE, calcGoals} from './scripts/calculator.js';
-import {getFormData, renderResults} from './scripts/ui.js';
+import { calcBMR, calcTDEE, calcGoals } from './scripts/calculator.js';
+import { getFormData, renderResults, populateForm } from './scripts/ui.js';
 import { saveFormData, loadFormData } from './scripts/storage.js';
-
-
-document.getElementById('calorie-form').addEventListener('submit', function(event){
-    event.preventDefault();
-
-    const data = getFormData();
-    if(!data){
-        alert('Por favor, completa todos los campos correctamente.');
-        return;
-    }
-
-    const bmr = calcBMR(data.peso, data.altura, data.edad, data.sexo);
-    const tdee = calcTDEE(bmr, data.factorActividad);
-    const goals = calcGoals(tdee, bmr);
-
-    renderResults(goals);
-});
+import { calcMacros } from './scripts/macros.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Cargar datos persistidos si existen
+    // Recupera los datos y llena el formulario
     const savedData = loadFormData();
     if (savedData) {
         populateForm(savedData);
@@ -31,18 +15,23 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        // 2. Obtener datos limpios de la UI
+        // 1. Datos e Interfaz
         const formData = getFormData();
-
-        // 3. Persistir en LocalStorage
         saveFormData(formData);
 
-        // 4. Lógica de negocio (pura)
+        // 2. Cálculos de Energía
         const bmr = calcBMR(formData.weight, formData.height, formData.age, formData.gender);
         const tdee = calcTDEE(bmr, parseFloat(formData.activity));
         const goals = calcGoals(tdee, bmr);
 
-        // 5. Renderizar resultados en el DOM
-        renderResults(bmr, tdee, goals);
+        // 3. Cálculos de Macronutrientes (El origen del undefined solucionado)
+        const allMacros = {
+            deficit: calcMacros(formData.weight, goals.deficit),
+            maintenance: calcMacros(formData.weight, goals.maintenance),
+            surplus: calcMacros(formData.weight, goals.surplus)
+        };
+
+        // 4. Renderizado Final
+        renderResults(bmr, tdee, goals, allMacros);
     });
 });
