@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         populateForm(savedData);
     }
 
-    const form = document.getElementById('calc-form');
+    const form = document.getElementById('calorie-form');
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
